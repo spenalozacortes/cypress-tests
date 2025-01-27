@@ -1,0 +1,6 @@
+{
+  "include": ["cypress/**/*.js"],
+  "compilerOptions": {
+    "types": ["cypress", "@badeball/cypress-cucumber-preprocessor"]
+  }
+}
