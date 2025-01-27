@@ -4,8 +4,8 @@ BeforeAll(() => {
   cy.log("Run before any scenario");
 });
 
-Before(() => {
-  cy.log("Run before every scenario");
+Before({ tags: '@test' }, () => {
+  cy.log("Run before every scenario with tag @test");
 });
 
 After(() => {
