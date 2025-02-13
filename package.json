@@ -9,6 +9,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "allure-commandline": "^2.27.0",
+    "@shelex/cypress-allure-plugin": "^2.40.0",
     "@types/cypress": "^0.1.6",
     "cypress": "^14.0.0"
   },
