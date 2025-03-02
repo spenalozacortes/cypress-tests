@@ -22,4 +22,5 @@ module.exports = defineConfig({
   setupNodeEvents,
   'env': { 'allure': true }
  },
+ video: true,
 });
