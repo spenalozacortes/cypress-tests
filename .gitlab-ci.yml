@@ -1,12 +1,6 @@
 stages:
   - test
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .npm/
-
 test:
   image: cypress/browsers:22.12.0
   stage: test
