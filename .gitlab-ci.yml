@@ -6,7 +6,6 @@ test:
   stage: test
   script:
     - npm ci
-    - npm start &
     - npx cypress run --browser chrome
   artifacts:
     when: always
