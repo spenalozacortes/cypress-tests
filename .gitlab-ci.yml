@@ -1,12 +1,15 @@
 stages:
   - test
 
+variables:
+  BASE_URL: 'https://example.cypress.io'
+
 test:
   image: cypress/browsers:22.12.0
   stage: test
   script:
     - npm ci
-    - npx cypress run --browser chrome
+    - npx cypress run --browser chrome --config baseUrl=$BASE_URL
   artifacts:
     when: always
     paths:

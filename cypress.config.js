@@ -19,6 +19,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
  e2e: {
   // specPattern: "**/*.feature",
+  baseUrl: 'https://example.cypress.io',
   setupNodeEvents,
   'env': { 'allure': true }
  },
