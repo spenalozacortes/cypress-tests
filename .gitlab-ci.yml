@@ -1,5 +1,6 @@
 stages:
   - test
+  - deploy
 
 variables:
   BASE_URL: 'https://example.cypress.io'
@@ -9,11 +10,21 @@ test:
   stage: test
   script:
     - npm ci
-    - npx cypress run --browser chrome --config baseUrl=$BASE_URL
+    - npx cypress run --browser chrome
   artifacts:
     when: always
     paths:
       - cypress/videos/**/*.mp4
       - cypress/screenshots/**/*.png
     expire_in: 1 day
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+  when: manual 
+  needs:
+    - job: test 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
     
