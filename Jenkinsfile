@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        ALLURE_RESULTS_DIR = "allure-results"
+        ALLURE_REPORT_DIR = "allure-report"
+    }
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -13,6 +18,21 @@ pipeline {
                 powershell '''
                 npx cypress run
                 '''
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                sh 'npx allure generate $ALLURE_RESULTS_DIR -o $ALLURE_REPORT_DIR --clean'
+            }
+        }
+
+        stage('Publish Allure Report') {
+            steps {
+                allure([
+                    results: [[path: "allure-results"]],
+                    report: [[path: "allure-report"]]
+                ])
             }
         }
 

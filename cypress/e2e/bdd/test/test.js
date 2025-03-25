@@ -1,11 +1,21 @@
-import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-const url = 'https://google.com'
+Given('I open Steam website', () => {
 
-Given('I open Google page', () => {
-  cy.visit(url);
 });
 
-Then('I see {string} in the title', (title) => {
-  cy.title().should('eq', title);
+When('I click on login button', () => {
+  
+});
+
+When('I enter user {string}', (user) => {
+
+});
+
+When('I enter password {string}', (password) => {
+
+});
+
+When('I click sign in button', () => {
+
 });
