@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
     "@shelex/cypress-allure-plugin": "^2.40.0",
     "@types/cypress": "^0.1.6",
     "allure-commandline": "^2.27.0",
