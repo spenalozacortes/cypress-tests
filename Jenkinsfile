@@ -15,5 +15,13 @@ pipeline {
                 '''
             }
         }
+
+         stage('Archive Cypress Artifacts') {
+            steps {
+                script {
+                    archiveArtifacts artifacts: '**/cypress/screenshots/**/*, **/cypress/videos/**/*, **/cypress/results/**/*', allowEmptyArchive: true
+                }
+            }
+        }
     }
 }
