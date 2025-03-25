@@ -23,5 +23,18 @@ pipeline {
                 }
             }
         }
+
+         stage('Copy Artifacts from Previous Build') {
+            steps {
+                script {
+                    copyArtifacts(
+                        projectName: env.JOB_NAME,
+                        buildNumber: '${BUILD_NUMBER-1}',
+                        filter: '**/cypress/screenshots/**/*, **/cypress/videos/**/*, **/cypress/results/**/*', 
+                        target: 'copied-artifacts'
+                    )
+                }
+            }
+        }
     }
 }
