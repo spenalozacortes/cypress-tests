@@ -11,11 +11,17 @@ describe('Test', () => {
     allure.severity(Severity.BLOCKER);
     allure.label("label");
 
-    cy.allure().step("Check length");
-    cy.get('.todo-list li').should('have.length', 2);
+    allure.parentSuite("Tests for web interface");
+    allure.suite("Tests for essential features");
+    allure.subSuite("Tests for authentication");
 
-    cy.allure().step("Check text");
-    cy.get('.todo-list li').first().should('have.text', 'Pay electric bill');
-    cy.get('.todo-list li').last().should('have.text', 'Walk the dog');
+    allure.step("Check length", () => {
+      cy.get('.todo-list li').should('have.length', 2);
+    });
+
+    allure.step("Check text", () => {
+      cy.get('.todo-list li').first().should('have.text', 'Pay electric bill');
+      cy.get('.todo-list li').last().should('have.text', 'Walk the dog');
+    });    
   });
 });
