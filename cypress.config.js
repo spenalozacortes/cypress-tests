@@ -2,16 +2,15 @@ const { defineConfig } = require("cypress");
 const browserify = require("@cypress/browserify-preprocessor");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const { preprendTransformerToOptions } = require("@badeball/cypress-cucumber-preprocessor/browserify");
-const allureWriter = require('@shelex/cypress-allure-plugin/writer.js');
+const { allureCypress } = require("allure-cypress/reporter");
 
 async function setupNodeEvents(on, config) {
-/*   const on = require('cypress-on-fix')(cypressOn)
-
-  await addCucumberPreprocessorPlugin(on, config);
-
+  /* await addCucumberPreprocessorPlugin(on, config);
   on("file:preprocessor", browserify(preprendTransformerToOptions(config, browserify.defaultOptions))); */
-  
-  allureWriter(on, config);
+ 
+  allureCypress(on, config, {
+    resultsDir: "allure-results",
+  });
   
   return config;
 }
@@ -21,7 +20,6 @@ module.exports = defineConfig({
   // specPattern: "**/*.feature",
   baseUrl: 'https://example.cypress.io',
   setupNodeEvents,
-  'env': { 'allure': true }
  },
  video: true,
 });
